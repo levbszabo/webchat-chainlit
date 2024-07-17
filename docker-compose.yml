@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  webchat-chainlit:
+    build: . 
+    container_name: webchat-chainlit
+    expose:
+      - "8001"
+    environment:
+      - AWS_DEFAULT_REGION=us-west-2
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - # Mount the nginx configuration file
+      - # Mount the letsencrypt directory as read-only
+    depends_on:
+      - webchat-chainlit

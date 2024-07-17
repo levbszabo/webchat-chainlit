@@ -1,0 +1,17 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var script = document.createElement('script');
+        script.src = "https://XXXXXXX/chainlit/copilot/index.js";
+        script.type = "application/javascript";
+        script.onload = function () {
+            if (window.mountChainlitWidget) {
+                window.mountChainlitWidget({
+                    chainlitServer: "https://XXXXX/chainlit",
+                });
+            } else {
+                console.error("Chainlit widget script failed to load.");
+            }
+        };
+        document.head.appendChild(script);
+    });
+</script>
